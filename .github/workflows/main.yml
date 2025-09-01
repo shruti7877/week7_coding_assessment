@@ -1,0 +1,21 @@
+name: Two-Job Pipeline
+
+on: [push]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Print Job 1 message
+        run: echo "job1 started"
+
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Print Job 2 message
+        run: echo "job2 started"
